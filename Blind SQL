@@ -1,0 +1,22 @@
+Summary #
+Invicti identified a Blind SQL Injection, which occurs when data input by a user is interpreted as an SQL command rather than as normal data by the backend database.
+
+This is an extremely common vulnerability and its successful exploitation can have critical implications.
+
+Invicti confirmed the vulnerability by executing a test SQL query on the backend database. In these tests, SQL injection was not obvious, but the different responses from the page based on the injection test allowed us to identify and confirm the SQL injection.
+
+Impact 
+Depending on the backend database, the database connection settings, and the operating system, an attacker can mount one or more of the following attacks successfully:
+Reading, updating and deleting arbitrary data or tables from the database
+Executing commands on the underlying operating system
+Actions To Take 
+See the remedy for solution.
+If you are not using a database access layer (DAL), consider using one. This will help you centralize the issue. You can also use ORM (object relational mapping). Most of the ORM systems use only parameterized queries and this can solve the whole SQL injection problem.
+Locate the all dynamically generated SQL queries and convert them to parameterized queries. (If you decide to use a DAL/ORM, change all legacy code to use these new libraries.)
+Use your weblogs and application logs to see if there were any previous but undetected attacks to this resource.
+Remediation 
+A robust method for mitigating the threat of SQL injection-based vulnerabilities is to use parameterized queries (prepared statements). Almost all modern languages provide built-in libraries for this. Wherever possible, do not create dynamic SQL queries or SQL queries with string concatenation.
+Required Skills for Successful Exploitation 
+There are numerous freely available tools to exploit SQL injection vulnerabilities. This is a complex area with many dependencies; however, it should be noted that the numerous resources available in this area have raised both attacker awareness of the issues and their ability to discover and leverage them. SQL injection is one of the most common web application vulnerabilities.
+Classifications 
+PCI v3.1-6.5.1; PCI v3.2-6.5.1; CAPEC-66; CWE-89; HIPAA-164.306(a), 164.308(a); ISO27001-A.14.2.5; WASC-19; OWASP 2013-A1; OWASP 2017-A1 , CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N
